@@ -4,5 +4,15 @@
   "description": "Get to know the countries on our planet better!",
   "main": "index.js",
   "author": "Mert Avcı <mertavci13@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "start": "webpack-dev-server — mode development — open — hot",
+    "build": "webpack — mode production"
+  },
+  "devDependencies": {
+    "html-webpack-plugin": "^3.2.0",
+    "webpack": "^4.38.0",
+    "webpack-cli": "^3.3.6",
+    "webpack-dev-server": "^3.7.2"
+  }
 }
