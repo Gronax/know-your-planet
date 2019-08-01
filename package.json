@@ -1,0 +1,8 @@
+{
+  "name": "know-your-planet",
+  "version": "1.0.0",
+  "description": "Get to know the countries on our planet better!",
+  "main": "index.js",
+  "author": "Mert Avcı <mertavci13@gmail.com>",
+  "license": "MIT"
+}
