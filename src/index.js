@@ -1,12 +1,10 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from 'react'
+import ReactDOM from 'react-dom'
 
-import App from './App';
+class Welcome extends React.Component {
+  render () {
+    return <h1>Hello React!</h1>
+  }
+}
 
-const title = 'React with Webpack and Babel';
-
-ReactDOM.render(
-  <App title={title} />,
-  document.getElementById('root')
-);
-module.hot.accept();
+ReactDOM.render(<Welcome />, document.getElementById('root'))

@@ -1,34 +1,63 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const webpack = require('webpack');
+const webpack = require('webpack')
+const path = require('path')
 
 module.exports = {
+  // context: path.join(__dirname, 'src'),
   entry: './src/index.js',
+  output: {
+    path: path.resolve(__dirname, 'build'),
+    filename: 'bundle.js'
+  },
   module: {
     rules: [
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: ['babel-loader']
+        use: ['babel-loader', 'eslint-loader']
+      },
+      {
+        test: /\.(scss|sass)$/,
+        use: [
+          'style-loader',
+          'css-loader',
+          'sass-loader'
+        ]
+      },
+      {
+        test: /\.(jpe?g|png|svg|gif)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name (file) {
+                if (process.env.NODE_ENV === 'development') {
+                  return '[path][name].[ext]'
+                }
+
+                return '[hash].[ext]'
+              }
+            }
+          }
+        ]
       }
     ]
   },
   resolve: {
-    extensions: ['*', '.js', '.jsx']
+    extensions: ['*', '.js', '.jsx'],
+    modules: [
+      path.join(__dirname, 'node_modules')
+    ]
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'Hello Webpack bundled JavaScript Project',
-      template: './src/index.html'
+      template: path.resolve('./src/index.html')
     }),
     new webpack.HotModuleReplacementPlugin()
   ],
-  output: {
-    path: __dirname + '/dist',
-    publicPath: '/',
-    filename: 'bundle.js'
-  },
   devServer: {
-    contentBase: './dist',
-    hot: true
-  }
-};
+    // hot: true
+    contentBase: "./build"
+  },
+  devtool: 'inline-source-map'
+}
