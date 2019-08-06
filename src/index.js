@@ -1,9 +1,14 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import Button from "@material-ui/core/Button"
 
 class Welcome extends React.Component {
   render () {
-    return <h1>Hello React!</h1>
+    return (
+      <Button variant="contained" color="primary">
+        Hello World
+      </Button>
+    )
   }
 }
 
