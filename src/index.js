@@ -1,15 +1,12 @@
-import React from 'react'
+import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
-import Button from "@material-ui/core/Button"
+import App from './js/containers/App'
+import './scss/base.scss'
 
-class Welcome extends React.Component {
+class MyApp extends Component {
   render () {
-    return (
-      <Button variant="contained" color="primary">
-        Hello World
-      </Button>
-    )
+    return <App />
   }
 }
 
-ReactDOM.render(<Welcome />, document.getElementById('root'))
+ReactDOM.render(<MyApp />, document.getElementById('root'))
